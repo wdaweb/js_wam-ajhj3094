@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&family=Zen+Kurenaido&display=swap"
+    rel="stylesheet">
+  <!-- <link rel="stylesheet" href="./animate.min.css"> -->
+  <link rel="stylesheet" href="./others/animate.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: white;
+      font-size: 1.3rem;
+      font-family: 'Zen Kurenaido', sans-serif;
+    }
+
+    body {
+      background: url("./images/1634028563_336735.jpg") no-repeat center/cover;
+      backdrop-filter: brightness(50%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    .hole {
+      width: 55px;
+      height: 55px;
+      border-spacing: 25px;
+    }
+
+    .red {
+      background: url("./images/噴火龍.gif") no-repeat center/130%;
+    }
+
+    .test {
+      background: url("./images/鯉魚王.gif") no-repeat center/120%;
+    }
+
+    .n1 {
+      background: url("./images/企鵝.gif") no-repeat center/80%;
+    }
+
+    .n2 {
+      background: url("./images/凱西.gif") no-repeat center/120%;
+    }
+
+    .n3 {
+      background: url("./images/卡比獸.gif") no-repeat center/120%;
+    }
+
+    .n4 {
+      background: url("./images/可達鴨.gif") no-repeat center/100%;
+    }
+
+    .n5 {
+      background: url("./images/呆呆獸.gif") no-repeat center/130%;
+    }
+
+    .n6 {
+      background: url("./images/夢幻.gif") no-repeat center/120%;
+    }
+
+    .n7 {
+      background: url("./images/快龍.gif") no-repeat center/130%;
+    }
+
+    .n8 {
+      background: url("./images/拉普拉絲.gif") no-repeat center/130%;
+    }
+
+    .n9 {
+      background: url("./images/洛奇亞.gif") no-repeat center/130%;
+    }
+
+    .n10 {
+      background: url("./images/皮卡丘.gif") no-repeat center/130%;
+    }
+
+    .n11 {
+      background: url("./images/神獸.gif") no-repeat center/110%;
+    }
+
+    .n12 {
+      background: url("./images/女主人公.gif") no-repeat center/130%;
+    }
+
+    .n13 {
+      background: url("./images/女主.gif") no-repeat center/110%;
+    }
+
+    .n14 {
+      background: url("./images/路人.gif") no-repeat center/60%;
+    }
+
+    .blue {
+      background: url("./images/ball2.gif") no-repeat center/90%;
+    }
+
+    .blue1 {
+      background: url("./images/女主人公禁止.gif") no-repeat center/90%;
+    }
+
+    .blue2 {
+      background: url("./images/女主禁止.gif") no-repeat center/90%;
+    }
+
+    .blue3 {
+      background: url("./images/路人禁止.gif") no-repeat center/90%;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    #game {
+      width: 900px;
+      height: 600px;
+      /* cursor: url(檔案路徑) 滑鼠x座標 滑鼠y座標, auto */
+      cursor: url("./images/準星2.png") 50 50, auto;
+      background: url("./images/背景3.jpg") no-repeat center/contain;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-spacing: 5px 5px;
+      position: relative;
+    }
+
+    section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .start_button {
+      width: 200px;
+      height: 50px;
+      background: url("./images/ajax-loader2.gif") no-repeat center/50%;
+      background-color: rgb(231, 233, 206);
+      cursor: pointer;
+      transition: .2s;
+      border-radius: 25px;
+      border: 3px solid rgba(177, 68, 68, 0.575);
+      filter: drop-shadow(0px 0px 1px rgb(207, 37, 37));
+      box-shadow: 3px 3px 3px 0 rgba(196, 40, 40, 0.2);
+    }
+
+    .start_button:hover {
+      background: url("./images/ajax-loader2.gif") no-repeat center/50%;
+      background-color: rgb(216, 204, 189);
+      width: 212px;
+      height: 52px;
+      margin-top: -1px;
+      border-radius: 30px;
+      box-shadow: 5px 5px 5px 0 rgba(196, 40, 40, 0.2);
+    }
+
+    .start_button_gray {
+      width: 200px;
+      height: 50px;
+      background: url("./images/ajax-loader.gif") no-repeat center/50%;
+      cursor: pointer;
+      transition: .2s;
+      border-radius: 25px;
+      border: 3px solid rgba(124, 103, 103, 0.575);
+      filter: opacity(0.5);
+      box-shadow: 5px 5px 0 0 rgba(196, 40, 40, 0.048);
+    }
+
+    #time {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      position: relative;
+      width: 900px;
+      height: 30px;
+    }
+
+    .number {
+      width: 900px;
+      height: 30px;
+      background-color: rgb(3, 161, 3);
+      position: absolute;
+    }
+
+    .animation {
+      animation: number 30s linear 1 alternate;
+    }
+
+    @keyframes number {
+      33% {
+        background-color: rgb(3, 161, 3);
+      }
+
+      34% {
+        background-color: orange;
+      }
+
+      66% {
+        background-color: orange;
+      }
+
+      67% {
+        background-color: red;
+      }
+
+      70% {
+        background-color: red;
+      }
+
+      71% {
+        background-color: white;
+      }
+
+      72% {
+        background-color: red;
+      }
+
+      73% {
+        background-color: white;
+      }
+
+      74% {
+        background-color: red;
+      }
+
+      75% {
+        background-color: white;
+      }
+
+      76% {
+        background-color: red;
+      }
+
+      77% {
+        background-color: white;
+      }
+
+      78% {
+        background-color: red;
+      }
+
+      79% {
+        background-color: white;
+      }
+
+      80% {
+        background-color: red;
+      }
+
+      81% {
+        background-color: white;
+      }
+
+      82% {
+        background-color: red;
+      }
+
+      83% {
+        background-color: white;
+      }
+
+      84% {
+        background-color: red;
+      }
+
+      85% {
+        background-color: white;
+      }
+
+      86% {
+        background-color: red;
+      }
+
+      86.5% {
+        background-color: white;
+      }
+
+      87% {
+        background-color: red;
+      }
+
+      87.5% {
+        background-color: white;
+      }
+
+      88% {
+        background-color: red;
+      }
+
+      88.5% {
+        background-color: white;
+      }
+
+      89% {
+        background-color: red;
+      }
+
+      89.5% {
+        background-color: white;
+      }
+
+      90% {
+        background-color: red;
+      }
+
+      90.5% {
+        background-color: white;
+      }
+
+      91% {
+        background-color: red;
+      }
+
+      91.5% {
+        background-color: white;
+      }
+
+      92% {
+        background-color: red;
+      }
+
+      92.5% {
+        background-color: white;
+      }
+
+      93% {
+        background-color: red;
+      }
+
+      93.5% {
+        background-color: white;
+      }
+
+      94% {
+        background-color: red;
+      }
+
+      94.5% {
+        background-color: white;
+      }
+
+      95% {
+        background-color: red;
+      }
+
+      95.5% {
+        background-color: white;
+      }
+
+      96% {
+        background-color: red;
+      }
+
+      96.5% {
+        background-color: white;
+      }
+
+      97% {
+        background-color: red;
+      }
+
+      97.5% {
+        background-color: white;
+      }
+
+      98% {
+        background-color: red;
+      }
+
+      98.5% {
+        background-color: white;
+      }
+
+      99% {
+        background-color: red;
+      }
+
+      99.5% {
+        background-color: white;
+      }
+
+      100% {
+        width: 0px;
+        background-color: red;
+      }
+    }
+
+    img {
+      position: absolute;
+      transform: scale(380%);
+      z-index: 1;
+      bottom: 50%;
+    }
+
+    .record {
+      width: 800px;
+      display: flex;
+      justify-content: space-around;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <img src="./images/主人公紅255.gif">
+    <table id="game">
+      <tr>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+      </tr>
+      <tr>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+      </tr>
+      <tr>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+      </tr>
+      <tr>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class=""></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+      </tr>
+      <tr>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class=""></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+      </tr>
+      <tr>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class=""></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+      </tr>
+      <tr>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+      </tr>
+      <tr>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+      </tr>
+      <tr>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+        <td class="hole"></td>
+      </tr>
+    </table>
+  </div>
+  <section id="time">
+    <div class="number"></div>
+  </section>
+  <section>
+    <input type="button" value="" id="start" class="start_button">
+  </section>
+  <section class="record">
+    <!-- <br> -->
+    <div id="score_animate">捕獲數量：<span id="score">0</span>&nbsp隻&nbsp&nbsp</div>
+    <!-- <hr> -->
+    <div>Highest Record&nbsp&nbsp
+      <!-- <br> -->
+      玩家：<span id="highname">???</span>
+      &nbsp&nbsp數量：<span id="highscore">0</span>
+    </div>
+  </section>
+  <script src="./jquery-3.6.0.min.js"></script>
+  <script>
+    const holes = document.getElementsByClassName('hole')
+    const start = document.getElementById('start')
+    const scoreText = document.getElementById('score')
+    const highnameText = document.getElementById('highname')
+    const highscoreText = document.getElementById('highscore')
+
+    const number = document.querySelector('.number')
+
+    const score_animate = document.getElementById('score_animate')
+
+    // 最高分
+    const high = { score: 0, name: '???' }
+    // 計分
+    let score = 0
+    // 計時器
+    let timer = 0
+    // 音效
+    const audio = new Audio()
+    const audioPlay = new Audio()
+
+
+    // 讀取資料
+    const storage = JSON.parse(localStorage.getItem('dadishu'))
+    // 如果有資料
+    if (storage) {
+      high.name = storage.name
+      high.score = storage.score
+      // 修改最高分顯示文字
+      highnameText.innerText = high.name
+      highscoreText.innerText = high.score
+    }
+
+    // --------------------------------------------------------------- //
+    start.onclick = () => {
+      // 停用開始按鈕
+      start.disabled = true
+      // 重設分數
+      score = 0
+      scoreText.innerText = score
+      // 每秒變換一次
+      timer = setInterval(game, 6000)
+      game()
+      // 十秒後遊戲結束
+      setTimeout(end, 10 * 3000)
+      number.style.animation = 'number 30s linear 1 alternate'
+      audioPlay.src = "./others/Pokemon RubySapphireEmerald- Littleroot Town.mp3"
+      audioPlay.play()
+      audioPlay.volume = 0.5
+      $("input").eq(0).removeClass("start_button");
+      $("input").eq(0).addClass("start_button_gray");
+      // $('input').removeClass('.start_button:hover')
+      // $('.start_button').hover(function () {
+      //   $(this).addClass('hover_color')
+      //   console.log(123456)
+      // }, function () {
+      //   console.log(123456)
+      // })
+    }
+
+
+
+    // --------------------------------------------------------------- //
+    // 每秒變換顏色
+    const game = () => {
+      // 移除顏色
+      for (const hole of holes) {
+        hole.classList.remove('red')
+        hole.classList.remove('blue')
+        hole.classList.remove('blue1')
+        hole.classList.remove('blue2')
+        hole.classList.remove('blue3')
+        hole.classList.remove('test')
+        hole.classList.remove('n1')
+        hole.classList.remove('n2')
+        hole.classList.remove('n3')
+        hole.classList.remove('n4')
+        hole.classList.remove('n5')
+        hole.classList.remove('n6')
+        hole.classList.remove('n7')
+        hole.classList.remove('n8')
+        hole.classList.remove('n9')
+        hole.classList.remove('n10')
+        hole.classList.remove('n11')
+        hole.classList.remove('n12')
+        hole.classList.remove('n13')
+        hole.classList.remove('n14')
+
+      }
+      // 隨機抽三個變換成紅色，不考慮重複
+      for (let i = 0; i < 1; i++) {
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('red')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('test')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n1')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n2')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n3')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n4')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n5')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n6')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n7')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n8')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n9')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n10')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n11')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n12')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n13')
+        holes[Math.round(Math.random() * (holes.length - 1))].classList.add('n14')
+      }
+    }
+
+    // --------------------------------------------------------------- //
+    // 遊戲結束
+    const end = () => {
+      // 停止變換顏色
+      clearInterval(timer)
+      // 把顏色清掉
+      for (const hole of holes) {
+        hole.classList.remove('red')
+        hole.classList.remove('blue')
+        hole.classList.remove('blue1')
+        hole.classList.remove('blue2')
+        hole.classList.remove('blue3')
+        hole.classList.remove('test')
+        hole.classList.remove('n1')
+        hole.classList.remove('n2')
+        hole.classList.remove('n3')
+        hole.classList.remove('n4')
+        hole.classList.remove('n5')
+        hole.classList.remove('n6')
+        hole.classList.remove('n7')
+        hole.classList.remove('n8')
+        hole.classList.remove('n9')
+        hole.classList.remove('n10')
+        hole.classList.remove('n11')
+        hole.classList.remove('n12')
+        hole.classList.remove('n13')
+        hole.classList.remove('n14')
+      }
+      // 啟用開始按鈕
+      start.disabled = false
+      // 跳出訊息
+      alert(`開放時間結束，恭喜你捕獲了 ${score} 隻寶可夢，還剩 ${65 - score} 隻未捕獲，真了不起！`)
+      // 紀錄最高分
+      if (score > high.score) {
+        audio.src = './others/pikapika.mp3'
+        audio.play()
+        // 請玩家輸入名字
+        const input = prompt('最高分，請輸入名字')
+        // 修改最高分變數資料
+        high.score = score
+        high.name = input || '???'
+        // 修改最高分顯示文字
+        highnameText.innerText = high.name
+        highscoreText.innerText = high.score
+        // 保存
+        // localStorage.setItem(資料名, 文字)
+        // 變數轉文字：JSON.stringify(變數)
+        localStorage.setItem('dadishu', JSON.stringify(high))
+      }
+      number.style.animation = ''
+      // $('.start_button').hover(function () {
+      //   $(this).addClass('.start_button:hover')
+      // })
+      $("input").eq(0).removeClass("start_button_gray");
+      $("input").eq(0).addClass("start_button");
+
+    }
+
+    // --------------------------------------------------------------- //
+    // 點擊變色
+    for (const hole of holes) {
+      hole.onclick = () => {
+        // 如果點下去時是紅色
+        if (hole.classList.contains('red')) {
+          // 變為藍色
+          hole.classList.replace('red', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.add('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('test')) {
+          // 變為藍色
+          hole.classList.replace('test', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.remove('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n1')) {
+          // 變為藍色
+          hole.classList.replace('n1', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.add('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n2')) {
+          // 變為藍色
+          hole.classList.replace('n2', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.remove('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n3')) {
+          // 變為藍色
+          hole.classList.replace('n3', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.add('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n4')) {
+          // 變為藍色
+          hole.classList.replace('n4', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.remove('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n5')) {
+          // 變為藍色
+          hole.classList.replace('n5', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.add('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n6')) {
+          // 變為藍色
+          hole.classList.replace('n6', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.remove('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n7')) {
+          // 變為藍色
+          hole.classList.replace('n7', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.add('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n8')) {
+          // 變為藍色
+          hole.classList.replace('n8', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.remove('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n9')) {
+          // 變為藍色
+          hole.classList.replace('n9', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.add('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n10')) {
+          // 變為藍色
+          hole.classList.replace('n10', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.remove('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n11')) {
+          // 變為藍色
+          hole.classList.replace('n11', 'blue')
+          // 加分
+          score++
+          scoreText.innerText = score
+          score_animate.classList.add('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n12')) {
+          // 變為藍色
+          hole.classList.replace('n12', 'blue1')
+          // 加分
+          // score++
+          scoreText.innerText = score
+          score_animate.classList.remove('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n13')) {
+          // 變為藍色
+          hole.classList.replace('n13', 'blue2')
+          // 加分
+          // score++
+          scoreText.innerText = score
+          score_animate.classList.remove('animate__animated', 'animate__bounce')
+        }
+        if (hole.classList.contains('n14')) {
+          // 變為藍色
+          hole.classList.replace('n14', 'blue3')
+          // 加分
+          // score++
+          scoreText.innerText = score
+          score_animate.classList.remove('animate__animated', 'animate__bounce')
+        }
+      }
+    }
+
+    // --------------------------------------------------------------- //
+
+    // 數字鍵
+    // document.onkeydown = event => {
+    //   // 按了什麼鍵
+    //   const key = event.key
+    //   // 如果是數字鍵
+    //   if (!isNaN(key)) {
+    //     // 找到對應的格子
+    //     const target = document.getElementById(`hole${key}`)
+    //     // 如果有找到
+    //     if (target && target.classList.contains('red')) {
+    //       // 變為藍色
+    //       target.classList.replace('red', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('test')) {
+    //       // 變為藍色
+    //       target.classList.replace('test', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n1')) {
+    //       // 變為藍色
+    //       target.classList.replace('n1', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n2')) {
+    //       // 變為藍色
+    //       target.classList.replace('n2', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n3')) {
+    //       // 變為藍色
+    //       target.classList.replace('n3', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n4')) {
+    //       // 變為藍色
+    //       target.classList.replace('n4', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n5')) {
+    //       // 變為藍色
+    //       target.classList.replace('n5', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n6')) {
+    //       // 變為藍色
+    //       target.classList.replace('n6', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n7')) {
+    //       // 變為藍色
+    //       target.classList.replace('n7', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n8')) {
+    //       // 變為藍色
+    //       target.classList.replace('n8', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n9')) {
+    //       // 變為藍色
+    //       target.classList.replace('n9', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n10')) {
+    //       // 變為藍色
+    //       target.classList.replace('n10', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //     if (target && target.classList.contains('n11')) {
+    //       // 變為藍色
+    //       target.classList.replace('n11', 'blue')
+    //       // 加分
+    //       score++
+    //       scoreText.innerText = score
+    //     }
+    //   }
+    // }
+  </script>
+</body>
+
+</html>
